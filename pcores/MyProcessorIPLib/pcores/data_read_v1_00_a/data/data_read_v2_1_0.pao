@@ -1,0 +1,10 @@
+##############################################################################
+## Filename:          D:/MyWork/MRI/DigSpartan/pcores/MyProcessorIPLib/pcores/data_read_v1_00_a/data/data_read_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Mon Aug 31 18:10:15 2020 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+lib data_read_v1_00_a user_logic vhdl
+lib data_read_v1_00_a data_read vhdl

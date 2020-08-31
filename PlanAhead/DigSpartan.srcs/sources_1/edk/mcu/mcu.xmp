@@ -3,6 +3,7 @@ XmpVersion: 14.7
 VerMgmt: 14.7
 IntStyle: default
 Flow: ise
+ModuleSearchPath: D:/MyWork/MRI/DigSpartan/pcores
 MHS File: mcu.mhs
 Architecture: spartan6
 Device: xc6slx9

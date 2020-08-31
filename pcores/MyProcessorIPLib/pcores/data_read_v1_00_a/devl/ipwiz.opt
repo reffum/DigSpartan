@@ -1,0 +1,7 @@
+-batch 
+-create data_read 
+-ver 1.00.a 
+-dir "D:\MyWork\MRI\DigSpartan\pcores\MyProcessorIPLib" 
+-lang vhdl 
+-bus axi4lite s 
+-xps 
