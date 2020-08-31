@@ -23,6 +23,7 @@ module top(
     wire [3:0] lvds_in;
     
     assign led = 8'hFF;
+    assign uart_tx = 1'b0;
     
     IBUFGDS 
     #(

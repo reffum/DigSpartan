@@ -2,3 +2,7 @@
 /PlanAhead/DigSpartan.runs/.jobs
 /PlanAhead/DigSpartan.runs/synth_1/*
 !/PlanAhead/DigSpartan.runs/synth_1/*.ngc
+/PlanAhead/DigSpartan.runs/impl_1/*
+!/PlanAhead/DigSpartan.runs/impl_1/*.bit
+!/PlanAhead/DigSpartan.runs/impl_1/*.bmm
+!/PlanAhead/DigSpartan.runs/impl_1/*.ncd
