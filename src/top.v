@@ -33,7 +33,7 @@ module top(
     (
        .O(lvds_clk),
        .I(lvds_clk_p),
-       .IB(lvds_clk_p)
+       .IB(lvds_clk_n)
     );
     
     // LVDS input and output
@@ -47,7 +47,7 @@ module top(
             ) 
             IBUFDS_LVDS_IN 
             (
-               .O(O),
+               .O(lvds_in[i]),
                .I(lvds_in_p[i]),
                .IB(lvds_in_n[i])
             );
