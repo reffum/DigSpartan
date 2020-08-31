@@ -7,3 +7,8 @@
 !/PlanAhead/DigSpartan.runs/impl_1/*.bit
 !/PlanAhead/DigSpartan.runs/impl_1/*.bmm
 !/PlanAhead/DigSpartan.runs/impl_1/*.ncd
+
+/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/*
+!/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/mcu.xmp
+!/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/mcu.mhs
+!/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/data
