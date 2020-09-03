@@ -1,0 +1,43 @@
+// BMM LOC annotation file.
+//
+// Release 14.1 -  HEAD, build 2.8 Mar 16, 2012
+// Copyright (c) 1995-2020 Xilinx, Inc.  All rights reserved.
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Processor 'mcu_i_microblaze_0', ID 100, memory map.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+ADDRESS_MAP mcu_i_microblaze_0 MICROBLAZE-LE 100 mcu_i/microblaze_0
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Processor 'mcu_i_microblaze_0' address space 'mcu_i_microblaze_0_bram_block_combined' 0x00000000:0x00007FFF (32 KBytes).
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ADDRESS_SPACE mcu_i_microblaze_0_bram_block_combined RAMB16 [0x00000000:0x00007FFF] mcu_i/microblaze_0_bram_block/microblaze_0_bram_block
+        BUS_BLOCK
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_0 RAMB16 [31:30] [0:8191] INPUT = microblaze_0_bram_block_combined_0.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_1 RAMB16 [29:28] [0:8191] INPUT = microblaze_0_bram_block_combined_1.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_2 RAMB16 [27:26] [0:8191] INPUT = microblaze_0_bram_block_combined_2.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_3 RAMB16 [25:24] [0:8191] INPUT = microblaze_0_bram_block_combined_3.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_4 RAMB16 [23:22] [0:8191] INPUT = microblaze_0_bram_block_combined_4.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_5 RAMB16 [21:20] [0:8191] INPUT = microblaze_0_bram_block_combined_5.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_6 RAMB16 [19:18] [0:8191] INPUT = microblaze_0_bram_block_combined_6.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_7 RAMB16 [17:16] [0:8191] INPUT = microblaze_0_bram_block_combined_7.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_8 RAMB16 [15:14] [0:8191] INPUT = microblaze_0_bram_block_combined_8.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_9 RAMB16 [13:12] [0:8191] INPUT = microblaze_0_bram_block_combined_9.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_10 RAMB16 [11:10] [0:8191] INPUT = microblaze_0_bram_block_combined_10.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_11 RAMB16 [9:8] [0:8191] INPUT = microblaze_0_bram_block_combined_11.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_12 RAMB16 [7:6] [0:8191] INPUT = microblaze_0_bram_block_combined_12.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_13 RAMB16 [5:4] [0:8191] INPUT = microblaze_0_bram_block_combined_13.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_14 RAMB16 [3:2] [0:8191] INPUT = microblaze_0_bram_block_combined_14.mem;
+            mcu_i/microblaze_0_bram_block/microblaze_0_bram_block/ramb16bwer_15 RAMB16 [1:0] [0:8191] INPUT = microblaze_0_bram_block_combined_15.mem;
+        END_BUS_BLOCK;
+    END_ADDRESS_SPACE;
+
+END_ADDRESS_MAP;
+

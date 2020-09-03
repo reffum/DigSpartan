@@ -46,6 +46,14 @@ module data_read
    parameter C_NUM_MEM = 1;
    parameter C_SLV_AWIDTH = 32;
    parameter C_SLV_DWIDTH = 32;
+
+   // One buffer size in bits
+   localparam BUFFER_SIZE = 4096;
+
+   // Buffers
+   reg 		  buffer0 [BUFFER_SIZE-1:0];
+   
+   
    
    assign LED0 = 1'b1;
 
@@ -57,6 +65,8 @@ module data_read
    assign S_AXI_RDATA = 32'd0;
    assign S_AXI_RRESP = 2'h0;
    assign S_AXI_RVALID = 1'b0;
+
+   
    
 
 endmodule

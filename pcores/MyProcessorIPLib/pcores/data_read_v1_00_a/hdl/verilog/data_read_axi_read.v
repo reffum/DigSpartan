@@ -24,8 +24,7 @@ module data_read_axi_read
     output [31:0] S_AXI_RDATA,
     output [1:0]  S_AXI_RRESP,
     output 	  S_AXI_RVALID,
-    input 	  S_AXI_RREADY,
-
+    input 	  S_AXI_RREADY
+   );
    
-   
-   )
+endmodule // data_read_axi_read
