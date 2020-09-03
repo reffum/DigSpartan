@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="8">
-	<Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc6slx9tqg144-2" LaunchPart="xc6slx9tqg144-2" ConstrsSet="constrs_1" Description="PlanAhead Defaults (XST defaults with hierarchy)" State="current" Dir="$PRUNDIR/synth_1" LaunchTime="1598885585">
+	<Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc6slx9tqg144-2" LaunchPart="xc6slx9tqg144-2" ConstrsSet="constrs_1" Description="PlanAhead Defaults (XST defaults with hierarchy)" State="current" Dir="$PRUNDIR/synth_1" LaunchTime="1599153238">
 		<File Type="XST-NGC" Name="top.ngc"/>
 		<File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_1/synth_1.psg"/>
 		<File Type="XST-SRP" Name="top.srp"/>
@@ -9,7 +9,7 @@
 		<File Type="PA-XSTPRJ" Name="top.prj"/>
 		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
 	</Run>
-	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc6slx9tqg144-2" LaunchPart="xc6slx9tqg144-2" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1598885595">
+	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc6slx9tqg144-2" LaunchPart="xc6slx9tqg144-2" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1599153273">
 		<File Type="PA-EDIF" Name="top.edf"/>
 		<File Type="MAP-PSR" Name="top.psr"/>
 		<File Type="PA-UCF" Name="top.ucf"/>
@@ -21,6 +21,7 @@
 		<File Type="BG-DRC" Name="top.drc"/>
 		<File Type="PA-CONSTRSDIR" Name=".constrs"/>
 		<File Type="BG-BGN" Name="top.bgn"/>
+		<File Type="PA-BMM" Name="top.bmm"/>
 		<File Type="TRCE-TWR" Name="top.twr"/>
 		<File Type="TRCE-TWX" Name="top.twx"/>
 		<File Type="XDL-XDL" Name="top_routed.xdl"/>

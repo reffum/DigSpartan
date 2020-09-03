@@ -22,8 +22,18 @@ module top(
     wire lvds_clk;
     wire [3:0] lvds_in;
     
-    assign led = 8'hFF;
+    assign led[7:1] = 7'h7F;
     assign uart_tx = 1'b0;
+    
+    (* BOX_TYPE = "user_black_box" *)
+    mcu mcu_i 
+    (
+        .RESET ( rst ),     // input RESET;
+        .CLK ( clk ),     // input CLK;
+        .LVDS_IN ( lvds_in ),     // input [3:0] LVDS_IN;
+        .LED0 ( led[0] ),     // output LED0;
+        .LVDS_CLK ( lvds_clk )     // input LVDS_CLK;
+      ); 
     
     IBUFGDS 
     #(

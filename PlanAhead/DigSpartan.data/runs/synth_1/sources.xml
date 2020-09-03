@@ -2,6 +2,13 @@
 <DARoots Version="1" Minor="26">
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/edk/mcu/mcu.xmp">
+      <FileInfo>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../src/top.v">
       <FileInfo>
         <Attr Name="UsedInSynthesis" Val="1"/>
@@ -11,6 +18,16 @@
     </File>
     <File Path="$PDATADIR/sources_1/ports.xml">
       <FileInfo SFType="PortsDb"/>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/microblaze/mb_bootloop_le.elf">
+      <FileInfo>
+        <Attr Name="AddrMapCells" Val="{{mcu_i/microblaze_0}}"/>
+        <Attr Name="ImportPath" Val="C:/XilinxISE/14.7/ISE_DS/EDK/sw/lib/microblaze/mb_bootloop_le.elf"/>
+        <Attr Name="ImportTime" Val="1381702982"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+        <Attr Name="IsVisible" Val="1"/>
+      </FileInfo>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
