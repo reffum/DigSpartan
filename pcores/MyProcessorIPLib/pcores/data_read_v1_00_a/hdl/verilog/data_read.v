@@ -51,9 +51,67 @@ module data_read
    localparam BUFFER_SIZE = 4096;
 
    // Buffers
-   reg 		  buffer0 [BUFFER_SIZE-1:0];
+   reg 		  buffer0[BUFFER_SIZE-1:0];
+   reg 		  buffer1[BUFFER_SIZE-1:0];
+   reg 		  buffer2[BUFFER_SIZE-1:0];
+   reg 		  buffer3[BUFFER_SIZE-1:0];
+
+   // State
+   localparam S0 = 0;
+   localparam S1 = 1;
+
+   reg 		  state_ns, state_cs;
+
+   //
+   // Registers
+   //
+
+   // Bit counter
+   integer 	  bit_counter_cs, bit_counter_ns;
+
+   //
+   // Nets
+   //
+
+   // CR.START in AXI and data clock domain
+   wire 	  cr_start, cr_start_lvds;
    
+   // Write enable signale. Enable write in buffers. Data domain.
+   wire 	  write_en;
+
+   // Reset in data domain. Low level active.
+   wire 	  lvds_resetn;
    
+
+   always @(posedge LVDS_CLK, negedge lvds_resetn) begin : STATE_REGISTER
+     if(~lvds_resetn)
+       state_cs <= S0;
+     else
+       state_cs <= state_ns;
+   end
+
+   always begin : STATE_LOGIC
+      state_ns <= state_cs;
+
+      case(state_cs)
+	S0:
+	  if(cr_start_lvds)
+	    state_ns <= S1;
+	S1:
+	  if(bit_counter_cs == BUFFER_SIZE-1)
+	    state_ns <= S0;
+      endcase // case (state_cs)
+   end // block: STATE_LOGIC
+
+   always @(posedge LVDS_CLK, negedge lvds_resetn) begin : DATA_REGISTERS
+      if(~lvds_resetn)
+	bit_counter_cs <= 0;
+      else
+	bit_counter_cs <= bit_counter_ns;
+   end
+
+   
+
    
    assign LED0 = 1'b1;
 
