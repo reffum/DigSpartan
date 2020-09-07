@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DARoots Version="1" Minor="26">
+  <FileSet Name="constrs_out" Type="Constrs" RelSrcDir="$PRUNDIR/impl_1/.constrs">
+    <File Path="$PRUNDIR/impl_1/.constrs/pins.ucf">
+      <FileInfo>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/timings.ucf">
+      <FileInfo>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_axi4lite_0_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_clock_generator_0_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_microblaze_0_dlmb_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_microblaze_0_ilmb_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_microblaze_0_intc_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PRUNDIR/impl_1/.constrs/mcu_microblaze_0_wrapper.ncf">
+      <FileInfo>
+        <Attr Name="UsedInImplementation" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PRUNDIR/impl_1/.constrs/pins.ucf"/>
+      <Option Name="ConstrsType" Val="UCF"/>
+    </Config>
+  </FileSet>
+</DARoots>

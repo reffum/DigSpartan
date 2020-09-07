@@ -1,4 +1,7 @@
 *~
+.#*
+*.edif
+
 /PlanAhead/DigSpartan.runs/.jobs
 /PlanAhead/DigSpartan.runs/synth_1/*
 !/PlanAhead/DigSpartan.runs/synth_1/*.ngc
@@ -12,3 +15,5 @@
 !/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/mcu.xmp
 !/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/mcu.mhs
 !/PlanAhead/DigSpartan.srcs/sources_1/edk/mcu/data
+
+/pcores/MyProcessorIPLib/pcores/data_read_v1_00_a/hdl/verilog/work

@@ -81,6 +81,34 @@ module data_read
 
    // Reset in data domain. Low level active.
    wire 	  lvds_resetn;
+
+
+   //
+   // Modules
+   //
+
+   data_read_axi_read data_read_axi_read_inst
+     (
+      .S_AXI_ACLK(S_AXI_ACLK),
+      .S_AXI_ARESETN(S_AXI_ARESETN),
+      .S_AXI_AWADDR(S_AXI_AWADDR),
+      .S_AXI_AWVALID(S_AXI_AWVALID),
+      .S_AXI_AWREADY(S_AXI_AWREADY),
+      .S_AXI_WDATA(S_AXI_WDATA),
+      .S_AXI_WSTRB(S_AXI_WSTRB),
+      .S_AXI_WVALID(S_AXI_WVALID),
+      .S_AXI_WREADY(S_AXI_WREADY),
+      .S_AXI_BRESP(S_AXI_BRESP),
+      .S_AXI_BVALID(S_AXI_BVALID),
+      .S_AXI_BREADY(S_AXI_BREADY),
+      .S_AXI_ARADDR(S_AXI_ARADDR),
+      .S_AXI_ARVALID(S_AXI_ARVALID),
+      .S_AXI_ARREADY(S_AXI_ARREADY),
+      .S_AXI_RDATA(S_AXI_RDATA),
+      .S_AXI_RRESP(S_AXI_RRESP),
+      .S_AXI_RVALID(S_AXI_RVALID),
+      .S_AXI_RREADY(S_AXI_RREADY)
+      );
    
 
    always @(posedge LVDS_CLK, negedge lvds_resetn) begin : STATE_REGISTER
@@ -110,21 +138,35 @@ module data_read
 	bit_counter_cs <= bit_counter_ns;
    end
 
-   
+   always begin : DATA_LOGIC
+      bit_counter_ns <= bit_counter_cs;
+
+      case(state_cs)
+	S0:
+	  bit_counter_ns <= 0;
+	S1:
+	  bit_counter_ns <= bit_counter_cs + 1;
+      endcase // case (state_cs)
+   end
+
+   always begin : CONTROL_SIGNALS
+      case(state_cs)
+	S0: begin
+	   write_en <= 1'b0;
+	   sr_c <= 1'b1;
+	end
+
+	S1: begin
+	   write_en <= 1'b1;
+	   sr_c <= 1'b0;
+	end
+      endcase // case (state_cs)
+   end // block: CONTROL_SIGNALS
 
    
+   
+
+   //TODO: Remove this port.
    assign LED0 = 1'b1;
-
-   assign S_AXI_AWREADY = 1'b0;
-   assign S_AXI_WREADY = 1'b0;
-   assign S_AXI_BRESP = 2'b00;
-   assign S_AXI_BVALID = 1'b0;
-   assign S_AXI_ARREADY = 1'b0;
-   assign S_AXI_RDATA = 32'd0;
-   assign S_AXI_RRESP = 2'h0;
-   assign S_AXI_RVALID = 1'b0;
-
-   
-   
 
 endmodule
