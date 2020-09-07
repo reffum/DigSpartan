@@ -47,15 +47,6 @@ module data_read
    parameter C_SLV_AWIDTH = 32;
    parameter C_SLV_DWIDTH = 32;
 
-   // One buffer size in bits
-   localparam BUFFER_SIZE = 4096;
-
-   // Buffers
-   reg 		  buffer0[BUFFER_SIZE-1:0];
-   reg 		  buffer1[BUFFER_SIZE-1:0];
-   reg 		  buffer2[BUFFER_SIZE-1:0];
-   reg 		  buffer3[BUFFER_SIZE-1:0];
-
    // State
    localparam S0 = 0;
    localparam S1 = 1;
@@ -108,6 +99,19 @@ module data_read
       .S_AXI_RRESP(S_AXI_RRESP),
       .S_AXI_RVALID(S_AXI_RVALID),
       .S_AXI_RREADY(S_AXI_RREADY)
+      );
+
+   data_read_buffer data_read_buffer_inst
+     (
+      .wr_clk(LVDS_CLK),
+      
+      .wr_addr(bit_counter_cs),
+      .wr_data(LVDS_IN),
+      .wr_en(write_en),
+
+      .rd_addr(9'd0),
+      .rd_data(),
+      .rd_sel(2'd0)
       );
    
 
