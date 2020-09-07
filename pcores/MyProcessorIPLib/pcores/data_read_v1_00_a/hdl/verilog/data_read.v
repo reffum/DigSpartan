@@ -82,6 +82,19 @@ module data_read
      (
       .S_AXI_ACLK(S_AXI_ACLK),
       .S_AXI_ARESETN(S_AXI_ARESETN),
+      .S_AXI_ARADDR(S_AXI_ARADDR),
+      .S_AXI_ARVALID(S_AXI_ARVALID),
+      .S_AXI_ARREADY(S_AXI_ARREADY),
+      .S_AXI_RDATA(S_AXI_RDATA),
+      .S_AXI_RRESP(S_AXI_RRESP),
+      .S_AXI_RVALID(S_AXI_RVALID),
+      .S_AXI_RREADY(S_AXI_RREADY)
+      );
+
+   data_write_axi_write data_write_axi_write_inst
+     (
+      .S_AXI_ACLK(S_AXI_ACLK),
+      .S_AXI_ARESETN(S_AXI_ARESETN),
       .S_AXI_AWADDR(S_AXI_AWADDR),
       .S_AXI_AWVALID(S_AXI_AWVALID),
       .S_AXI_AWREADY(S_AXI_AWREADY),
@@ -92,15 +105,10 @@ module data_read
       .S_AXI_BRESP(S_AXI_BRESP),
       .S_AXI_BVALID(S_AXI_BVALID),
       .S_AXI_BREADY(S_AXI_BREADY),
-      .S_AXI_ARADDR(S_AXI_ARADDR),
-      .S_AXI_ARVALID(S_AXI_ARVALID),
-      .S_AXI_ARREADY(S_AXI_ARREADY),
-      .S_AXI_RDATA(S_AXI_RDATA),
-      .S_AXI_RRESP(S_AXI_RRESP),
-      .S_AXI_RVALID(S_AXI_RVALID),
-      .S_AXI_RREADY(S_AXI_RREADY)
-      );
 
+      .cr_start(cr_start)
+      );
+   
    data_read_buffer data_read_buffer_inst
      (
       .wr_clk(LVDS_CLK),

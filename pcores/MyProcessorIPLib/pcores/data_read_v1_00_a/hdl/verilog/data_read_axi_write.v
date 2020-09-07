@@ -19,15 +19,6 @@ module data_read_axi_write
    output 	 S_AXI_BVALID,
    input 	 S_AXI_BREADY,
 
-   input [31:0]  S_AXI_ARADDR,
-   input 	 S_AXI_ARVALID,
-   output 	 S_AXI_ARREADY,
-  
-   output [31:0] S_AXI_RDATA,
-   output [1:0]  S_AXI_RRESP,
-   output 	 S_AXI_RVALID,
-   input 	 S_AXI_RREADY,
-
    //
    // Control signals
    //
@@ -93,6 +84,25 @@ module data_read_axi_write
       endcase // case (state_cs)
    end
 
+   always begin : CONTROL_AXI_LOGIC
+      S_AXI_AWREADY <= 1'b0;
+      S_AXI_WREADY <= 1'b0;
+      S_AXI_BRESP <= 2'b00;
+      S_AXI_BVALID <= 1'b0;
+
+      case(state_cs)
+	S1: begin
+	   S_AXI_AWREADY <= 1'b1;
+	   S_AXI_WREADY <= 1'b1;
+	end
+
+	S2: begin
+	   S_AXI_BRESP <= 2'b00;
+	   S_AXI_BVALID <= 1'b1;
+	end
+      endcase // case (state_cs)
+   end // block: CONTROL_AXI_LOGIC
+   
    //
    // Outputs
    //
