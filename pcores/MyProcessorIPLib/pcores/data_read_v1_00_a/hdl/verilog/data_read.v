@@ -167,9 +167,6 @@ module data_read
       endcase // case (state_cs)
    end // block: CONTROL_SIGNALS
 
-   
-   
-
    //TODO: Remove this port.
    assign LED0 = 1'b1;
 

@@ -1,0 +1,8 @@
+
+// AXI addresses
+`define AXI_ADDR_CR		0
+`define AXI_ADDR_SR		4
+`define AXI_ADDR_BUFFER0	'h1000
+`define AXI_ADDR_BUFFER1	'h2000
+`define AXI_ADDR_BUFFER2	'h3000
+`define AXI_ADDR_BUFFER3	'h4000

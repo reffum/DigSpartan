@@ -1,6 +1,7 @@
 *~
 .#*
 *.edif
+*.ldb
 
 /PlanAhead/DigSpartan.runs/.jobs
 /PlanAhead/DigSpartan.runs/synth_1/*
