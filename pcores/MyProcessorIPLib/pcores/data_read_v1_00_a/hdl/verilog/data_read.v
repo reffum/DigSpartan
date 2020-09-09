@@ -1,6 +1,4 @@
 
-`timescale 1 ns / 1 ps
-
 module data_read
    (
     // AXI-lite slave interface
@@ -31,7 +29,8 @@ module data_read
 
     input [3:0]   LVDS_IN,
     input 	  LVDS_CLK,
-    output 	  LED0
+    output 	  P12_SEL1,
+    output 	  P12_SEL3
     );
 
    parameter C_S_AXI_DATA_WIDTH = 32;
@@ -175,7 +174,21 @@ module data_read
       endcase // case (state_cs)
    end // block: CONTROL_SIGNALS
 
-   //TODO: Remove this port.
-   assign LED0 = 1'b1;
+   //
+   // Outputs
+   //
+   always @(state_cs) begin : OUTPUTS
+      case(state_cs)
+	S0: begin
+	   P12_SEL1 <= 1'b0;
+	   P12_SEL3 <= 1'b0;
+	end
+
+	S1: begin
+	   P12_SEL1 <= 1'b1;
+	   P12_SEL3 <= 1'b1;
+	end
+      endcase
+   end
 
 endmodule

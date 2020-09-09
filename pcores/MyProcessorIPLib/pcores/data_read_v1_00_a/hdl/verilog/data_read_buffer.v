@@ -17,7 +17,7 @@ module data_read_buffer
    );
 
    // One buffer size in bits
-   localparam BUFFER_SIZE = 4096;
+   localparam BUFFER_SIZE = 8192;
 
    // Buffers
    reg [BUFFER_SIZE-1:0] data_buffer[3:0];
