@@ -51,9 +51,9 @@ module tb;
       .*
       );
 
-   initial begin : AXI_CLK_GEN
+   initial begin : AXI_ACLK_GEN
       S_AXI_ACLK = 1'b0;
-      forever #(AXI_CLK_PERIOD/2) S_AXI_ACLK = ~S_AXI_ACLK;
+      forever #(AXI_ACLK_PERIOD/2) S_AXI_ACLK = ~S_AXI_ACLK;
    end
 
    initial begin : LVDS_CLK_GEN
@@ -72,7 +72,6 @@ module tb;
       $finish;
       
    end
-
 
    default clocking cb @(posedge S_AXI_ACLK);
       default input #1step output negedge;

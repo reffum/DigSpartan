@@ -3,28 +3,28 @@
 module data_read_axi_write
   (
    // AXI-lite slave interface
-   input 	 S_AXI_ACLK,
-   input 	 S_AXI_ARESETN,
+   input 	    S_AXI_ACLK,
+   input 	    S_AXI_ARESETN,
   
-   input [31:0]  S_AXI_AWADDR,
-   input 	 S_AXI_AWVALID,
-   output 	 S_AXI_AWREADY,
+   input [31:0]     S_AXI_AWADDR,
+   input 	    S_AXI_AWVALID,
+   output reg 	    S_AXI_AWREADY,
   
-   input [31:0]  S_AXI_WDATA,
-   input [3:0] 	 S_AXI_WSTRB,
-   input 	 S_AXI_WVALID,
-   output 	 S_AXI_WREADY,
+   input [31:0]     S_AXI_WDATA,
+   input [3:0] 	    S_AXI_WSTRB,
+   input 	    S_AXI_WVALID,
+   output reg 	    S_AXI_WREADY,
 
-   output [1:0]  S_AXI_BRESP,
-   output 	 S_AXI_BVALID,
-   input 	 S_AXI_BREADY,
+   output reg [1:0] S_AXI_BRESP,
+   output reg	    S_AXI_BVALID,
+   input 	    S_AXI_BREADY,
 
    //
    // Control signals
    //
 
    // CR.START
-   output 	 cr_start
+   output 	    cr_start
   
    );
 
@@ -46,12 +46,12 @@ module data_read_axi_write
    reg 		 cr_start_cs, cr_start_ns;
    
    
-   function WriteReg(bit [31:0] addr, bit [31:0] data);
+   task WriteReg(input [31:0] addr, input [31:0] data);
       case(addr)
 	`AXI_ADDR_CR:
 	  cr_start_ns <= 1'b1;
       endcase // case (addr)
-   endfunction   
+   endtask
    
    always @(posedge S_AXI_ACLK, negedge S_AXI_ARESETN) begin : STATE_REGISTER
       if(!S_AXI_ARESETN)
@@ -70,7 +70,7 @@ module data_read_axi_write
 	S1:
 	  state_ns <= S2;
 	S2:
-	  if(BREADY)
+	  if(S_AXI_BREADY)
 	    state_ns <= S0;
       endcase // case (state_cs)
    end // block: STATE_LOGIC

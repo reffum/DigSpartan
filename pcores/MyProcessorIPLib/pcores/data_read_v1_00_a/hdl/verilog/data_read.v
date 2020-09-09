@@ -29,8 +29,8 @@ module data_read
 
     input [3:0]   LVDS_IN,
     input 	  LVDS_CLK,
-    output 	  P12_SEL1,
-    output 	  P12_SEL3
+    output reg 	  P12_SEL1,
+    output reg	  P12_SEL3
     );
 
    parameter C_S_AXI_DATA_WIDTH = 32;
@@ -46,10 +46,16 @@ module data_read
    parameter C_SLV_AWIDTH = 32;
    parameter C_SLV_DWIDTH = 32;
 
+   //
+   // Constants
+   //
+   localparam BUFFER_SIZE = 8192;
+   
+   
    // State
    localparam S0 = 0;
    localparam S1 = 1;
-
+   
    reg 		  state_ns, state_cs;
 
    //
@@ -65,13 +71,21 @@ module data_read
 
    // CR.START in AXI and data clock domain
    wire 	  cr_start, cr_start_lvds;
+
+   // SR.C
+   reg 		  sr_c;
    
    // Write enable signale. Enable write in buffers. Data domain.
-   wire 	  write_en;
+   reg 		  write_en;
 
    // Reset in data domain. Low level active.
    wire 	  lvds_resetn;
 
+   // Buffer read data bus
+   wire [9:0] 	  buf_addr;
+   wire [1:0] 	  buf_sel;
+   wire [31:0] 	  buf_data;
+   
 
    //
    // Modules
@@ -87,7 +101,12 @@ module data_read
       .S_AXI_RDATA(S_AXI_RDATA),
       .S_AXI_RRESP(S_AXI_RRESP),
       .S_AXI_RVALID(S_AXI_RVALID),
-      .S_AXI_RREADY(S_AXI_RREADY)
+      .S_AXI_RREADY(S_AXI_RREADY),
+
+      .sr_c(sr_c),
+      .buf_addr(buf_addr),
+      .buf_sel(buf_sel),
+      .buf_data(buf_data)
       );
 
    data_write_axi_write data_write_axi_write_inst
@@ -108,7 +127,7 @@ module data_read
       .cr_start(cr_start)
       );
    
-   data_read_buffer data_read_buffer_inst
+   data_read_buffer #(BUFFER_SIZE)  data_read_buffer_inst
      (
       .wr_clk(LVDS_CLK),
       
@@ -116,9 +135,9 @@ module data_read
       .wr_data(LVDS_IN),
       .wr_en(write_en),
 
-      .rd_addr(9'd0),
-      .rd_data(),
-      .rd_sel(2'd0)
+      .rd_addr(buf_addr),
+      .rd_data(buf_data),
+      .rd_sel(buf_sel)
       );
    
 

@@ -1,29 +1,31 @@
+`include "data_read_common.hv"
+
 module data_read_axi_read
   (
    // AXI-lite slave interface
-   input 	 S_AXI_ACLK,
-   input 	 S_AXI_ARESETN,
+   input 	     S_AXI_ACLK,
+   input 	     S_AXI_ARESETN,
   
-   input [31:0]  S_AXI_ARADDR,
-   input 	 S_AXI_ARVALID,
-   output 	 S_AXI_ARREADY,
+   input [31:0]      S_AXI_ARADDR,
+   input 	     S_AXI_ARVALID,
+   output reg 	     S_AXI_ARREADY,
   
-   output [31:0] S_AXI_RDATA,
-   output [1:0]  S_AXI_RRESP,
-   output 	 S_AXI_RVALID,
-   input 	 S_AXI_RREADY,
+   output reg [31:0] S_AXI_RDATA,
+   output reg [1:0]  S_AXI_RRESP,
+   output reg 	     S_AXI_RVALID,
+   input 	     S_AXI_RREADY,
   
    //
    // Control signals
    //
 
    // SR.C
-   input 	 sr_c,
+   input 	     sr_c,
 
    // Buffer read
-   output [9:0]  buf_addr,
-   output [1:0]  buf_sel,
-   input [31:0]  buf_data
+   output [9:0]      buf_addr,
+   output reg [1:0]  buf_sel,
+   input [31:0]      buf_data
    );
    
    //
@@ -47,7 +49,7 @@ module data_read_axi_read
 
       case(state_cs)
 	S0:
-	  if(ARVALID)
+	  if(S_AXI_ARVALID)
 	    state_ns <= S1;
 	S1:
 	  state_ns <= S2;
@@ -56,14 +58,14 @@ module data_read_axi_read
       endcase // case (state_cs)
    end // block: STATE_LOGIC
 
-   function [31:0] ReadData(bit [31:0] addr);
+   function [31:0] ReadData(input [31:0] addr);
       case(addr)
 	`AXI_ADDR_CR:
-	  return 0;
+	  ReadData =  0;
 	`AXI_ADDR_SR:
-	  return sr_c;
+	  ReadData =  sr_c;
 	default:
-	  return buf_data;
+	  ReadData =  buf_data;
       endcase // case (addr)
    endfunction // ReadData
    
