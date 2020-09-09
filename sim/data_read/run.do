@@ -22,7 +22,7 @@ proc simulate {} {
     log -r /*
 
     add wave -group AXI /UUT/S_AXI_*
-    add wave /UUT/LVDS_CLK /UUTLVDS_IN /UUT/P12_SEL1 /UUT/P12_SEL3
+    add wave /UUT/LVDS_CLK /UUT/LVDS_IN /UUT/P12_SEL1 /UUT/P12_SEL3
 
     config wave -signalnamewidth 1
     

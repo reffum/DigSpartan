@@ -60,7 +60,7 @@ module data_read_axi_write
 	state_cs <= state_ns;
    end
 
-   always begin : STATE_LOGIC
+   always @(state_cs, S_AXI_AWVALID, S_AXI_WVALID, S_AXI_BREADY) begin : STATE_LOGIC
       state_ns <= state_cs;
 
       case(state_cs)
@@ -84,7 +84,7 @@ module data_read_axi_write
       endcase // case (state_cs)
    end
 
-   always begin : CONTROL_AXI_LOGIC
+   always @(state_cs) begin : CONTROL_AXI_LOGIC
       S_AXI_AWREADY <= 1'b0;
       S_AXI_WREADY <= 1'b0;
       S_AXI_BRESP <= 2'b00;

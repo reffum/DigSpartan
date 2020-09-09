@@ -44,7 +44,7 @@ module data_read_axi_read
 	state_cs <= state_ns;
    end
 
-   always begin : STATE_LOGIC
+   always @(state_cs, S_AXI_ARVALID) begin : STATE_LOGIC
       state_ns <= state_cs;
 
       case(state_cs)
@@ -70,7 +70,7 @@ module data_read_axi_read
    endfunction // ReadData
    
    
-   always begin : AXI_SIGNALS_LOGIC
+   always @(state_cs, S_AXI_ARADDR) begin : AXI_SIGNALS_LOGIC
       S_AXI_ARREADY <= 1'b0;
       S_AXI_RVALID <= 1'b0;
       S_AXI_RDATA <= 32'd0;
@@ -94,7 +94,7 @@ module data_read_axi_read
    
    assign buf_addr = S_AXI_ARADDR[9:0];
 
-   always begin
+   always @(S_AXI_ARADDR) begin
       case(S_AXI_ARADDR[12:10])
 	3'b001:
 	  buf_sel <= 2'b00;

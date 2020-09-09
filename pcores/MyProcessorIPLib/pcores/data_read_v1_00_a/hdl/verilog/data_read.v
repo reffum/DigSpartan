@@ -63,7 +63,7 @@ module data_read
    //
 
    // Bit counter
-   integer 	  bit_counter_cs, bit_counter_ns;
+   reg [13:0] 	  bit_counter_cs, bit_counter_ns;
 
    //
    // Nets
@@ -109,7 +109,7 @@ module data_read
       .buf_data(buf_data)
       );
 
-   data_write_axi_write data_write_axi_write_inst
+   data_read_axi_write data_read_axi_write_inst
      (
       .S_AXI_ACLK(S_AXI_ACLK),
       .S_AXI_ARESETN(S_AXI_ARESETN),
@@ -148,7 +148,7 @@ module data_read
        state_cs <= state_ns;
    end
 
-   always begin : STATE_LOGIC
+   always @(state_cs, cr_start_lvds, bit_counter_cs) begin : STATE_LOGIC
       state_ns <= state_cs;
 
       case(state_cs)
@@ -168,7 +168,7 @@ module data_read
 	bit_counter_cs <= bit_counter_ns;
    end
 
-   always begin : DATA_LOGIC
+   always @(bit_counter_cs, state_cs) begin : DATA_LOGIC
       bit_counter_ns <= bit_counter_cs;
 
       case(state_cs)
@@ -179,7 +179,7 @@ module data_read
       endcase // case (state_cs)
    end
 
-   always begin : CONTROL_SIGNALS
+   always @(state_cs) begin : CONTROL_SIGNALS
       case(state_cs)
 	S0: begin
 	   write_en <= 1'b0;

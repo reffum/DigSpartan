@@ -6,11 +6,11 @@ module data_read_buffer
   (
    input 	     wr_clk,
 
-   input [11:0]      wr_addr, 
+   input [13:0]      wr_addr, 
    input [3:0] 	     wr_data,
    input 	     wr_en,
 
-   input [8:0] 	     rd_addr,
+   input [9:0] 	     rd_addr,
    output reg [31:0] rd_data,
    input [1:0] 	     rd_sel
 
@@ -31,7 +31,7 @@ module data_read_buffer
 	  data_buffer[wr_addr][i] <= wr_data[i];
    end
 
-   always begin : BUFFER_READ
+   always @(rd_addr, rd_sel) begin : BUFFER_READ
       integer i;
 
       for(i = 0; i < 32; i=i+1)
